@@ -18,7 +18,7 @@ nvm use && npm start [identity-profile]
 
 ## Build for production
 
-Run `npx nx build identity-profile` to build the application.
+Run `nx run app-name:build --prod --baseHref $BASE_HREF --deploy-url $BASE_HREF` to build the application.
 
 ## Create app
 
