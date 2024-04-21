@@ -2,25 +2,25 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
-    "noUnusedLocals": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "resolveJsonModule": true,    
+    "esModuleInterop": true,
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "lib": ["es2020", "dom"],
+    "strict": true,    
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@company/shared/environments": ["libs/shared/environments/src/index.ts"],
-      "@company/shared/models": ["libs/shared/models/src/index.ts"],
-      "@company/shared/session": ["libs/shared/session/src/index.ts"],
-      "@company/user/profile": ["libs/user/profile/src/index.ts"]
+      "@company/common-models": ["libs/common-models/src/index.ts"],
+      "@company/environment": ["libs/environment/src/index.ts"],
+      "@company/state-module": ["libs/state-module/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

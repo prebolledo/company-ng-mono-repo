@@ -10,13 +10,56 @@ Enhance your Nx experience by installing [Nx Console](https://nx.dev/nx-console)
 provides an interactive UI to view your projects, run tasks, generate code, and more! Available for VSCode, IntelliJ and
 comes with a LSP for Vim users.
 
-## Start the application
+## Start the application in development mode
 
-Run `npx nx serve login` to start the development server. Happy coding!
+```
+nvm use && npm start [identity-profile]
+```
 
 ## Build for production
 
-Run `npx nx build login` to build the application. The build artifacts are stored in the output directory (e.g. `dist/` or `build/`), ready to be deployed.
+Run `npx nx build identity-profile` to build the application.
+
+## Create app
+
+```
+npx nx g @nx/angular:application [app]
+```
+
+## Genetate Library
+
+```
+npx npx nx g @nx/js:lib name --directory [shared|other-group-folder] [--tags shared] [--dry-run]
+```
+```
+npx npx nx g @nx/angular:library name --directory=[shared|other-group-folder] [--tags shared] [--dry-run]
+```
+
+## Run test
+
+```
+npx nx test --project=[app-name|lib-name]
+```
+
+## Run lint
+
+```
+npx nx lint --project=[app-name|lib-name]
+```
+
+# Docker Compose
+
+```
+docker compose up
+```
+
+```
+docker compose donw
+```
+
+```
+docker compose up --build
+```
 
 ## Running tasks
 

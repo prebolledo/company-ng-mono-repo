@@ -1,0 +1,44 @@
+version: "3"
+
+networks:
+  corp:
+    driver: bridge
+
+services:
+  identity_profile_web:
+    container_name: identity-profile
+    networks:
+      - corp
+    restart: always
+    build:
+      context: .
+      dockerfile: ci-cd/app/Dockerfile
+      args:
+        - APP=identity-profile
+        - BASE_HREF=/identity-profile
+
+  products_web:
+    container_name: products
+    networks:
+      - corp
+    restart: always
+    build:
+      context: .
+      dockerfile: ci-cd/app/Dockerfile
+      args:
+        - APP=products
+        - BASE_HREF=/products   
+
+  proxy_reverse:
+    container_name: proxy-reverse
+    networks:
+      - corp
+    restart: always
+    build:
+      context: .
+      dockerfile: ci-cd/proxy-reverse/Dockerfile
+    depends_on:
+      - identity_profile_web
+      - products_web
+    ports:
+      - "4000:80"
