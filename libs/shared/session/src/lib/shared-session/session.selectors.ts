@@ -1,9 +1,3 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { SessionState, sessionStateFeatureKey} from './state';
-
-const sessionState = createFeatureSelector<SessionState>(sessionStateFeatureKey);
-
-export const session = createSelector(
-  sessionState,
-  (aplicationState) => aplicationState
-);
+import { sessionFeature } from './features';
+export const user = sessionFeature.selectUser;
+export const token = sessionFeature.selectToken;

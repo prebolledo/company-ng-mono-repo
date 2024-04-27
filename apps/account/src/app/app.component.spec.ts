@@ -1,15 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { provideState, provideStore } from '@ngrx/store';
-import { SessionEffects, sessionFeature } from '@company/shared/session';
 import { provideEffects } from '@ngrx/effects';
-import { ProductsPageComponent } from './pages/products'
+import { SessionEffects, sessionFeature } from '@company/shared/session';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterModule],
+      imports: [
+        RouterModule,
+        CommonModule,
+        ReactiveFormsModule,
+      ],
       providers: [
         provideStore(),    
         provideState(sessionFeature),
@@ -26,13 +31,4 @@ describe('AppComponent', () => {
       '<router-outlet></router-outlet>'
     );
   });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(ProductsPageComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Products'
-    );
-  });  
 });

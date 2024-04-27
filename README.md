@@ -13,7 +13,7 @@ comes with a LSP for Vim users.
 ## Start the application in development mode
 
 ```
-nvm use && npm start [identity-profile]
+nvm use && npm start [account]
 ```
 
 ## Build for production

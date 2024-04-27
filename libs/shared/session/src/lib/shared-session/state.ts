@@ -1,13 +1,13 @@
 import { User } from "@company/shared/models";
 
 export interface SessionState {
-  user?: User;
-  token?: string,
+  user: User | null;
+  token: string | null,
 }
 
 export const initialState: SessionState = {
-  user: undefined,
-  token: undefined,
+  user: null,
+  token: null,
 };
 
 export const sessionStateFeatureKey = 'sessionState';

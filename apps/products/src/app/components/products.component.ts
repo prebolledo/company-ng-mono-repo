@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,10 +7,12 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <section>
-      <h1>Products</h1>
+      % discount: {{discount}}
     </section>
   `,
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
-export class ProductsComponent {}
+export class ProductsComponent {
+  @Input() discount = 0
+}

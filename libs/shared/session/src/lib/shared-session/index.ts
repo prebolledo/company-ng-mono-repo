@@ -1,5 +1,5 @@
 export * as SessionStateActions from './actions';
-export * from './reducers';
+export * from './features';
 export * from './state';
-export * from './state.module';
 export * as SessionStateSelector from  './session.selectors'
+export * from './effects'

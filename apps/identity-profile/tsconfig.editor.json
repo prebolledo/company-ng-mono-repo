@@ -1,6 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "src/app/services/auth.service.ts", "src/app/components/form/form.component.spec.ts", "src/app/components/form/form.component.ts", "src/app/components/profile/profile.component.spec.ts"],
-  "compilerOptions": {},
-  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
-}

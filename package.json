@@ -21,6 +21,7 @@
     "@angular/ssr": "~17.3.0",
     "@ngrx/component": "^17.2.0",
     "@ngrx/component-store": "^17.2.0",
+    "@ngrx/effects": "^17.2.0",
     "@ngrx/store": "^17.2.0",
     "@ngrx/store-devtools": "^17.2.0",
     "@nx/angular": "18.2.4",
