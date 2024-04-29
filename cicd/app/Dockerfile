@@ -1,6 +1,7 @@
 # Use a specific version of the official Node.js image based on the slim variant
 FROM node:20.12.2-bullseye-slim AS build
 ARG APP
+ARG ENV
 ARG BASE_HREF
 # Set the working directory
 WORKDIR /usr/src/root
@@ -22,8 +23,10 @@ RUN npm install -g nx
 # Set NX_DAEMON environment variable to false to prevent nx from running in daemon mode
 ENV NX_DAEMON=false
 
+#CMD ["sleep", "infinity"]
+
 # Build the application
-RUN nx run $APP:build --prod --baseHref $BASE_HREF --deploy-url $BASE_HREF
+RUN nx run $APP:build --configuration=$ENV --baseHref $BASE_HREF --deploy-url $BASE_HREF
 
 # Create a new stage for the runtime image
 FROM nginx:latest AS runtime

@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Store, StoreModule } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { SessionStateActions } from '@company/shared/session';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -12,8 +11,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     FormsModule,
     CommonModule,
-    RouterModule, 
-    StoreModule,
   ],
   template: `
     <h2>{{title}}</h2>

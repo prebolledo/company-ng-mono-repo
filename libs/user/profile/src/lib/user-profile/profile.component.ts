@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { SessionStateActions, SessionStateSelector } from '@company/shared/session';
-import { User } from '@company/shared/models';
+import { SessionStateActions, sessionFeature } from '@company/shared/session';
 
 @Component({
   selector: 'lib-profile',
@@ -33,8 +31,8 @@ import { User } from '@company/shared/models';
   styleUrl: './profile.component.css',
 })
 export class ProfileComponent {
-  token$: Observable<string | null> = this.store.select(SessionStateSelector.token); 
-  user$: Observable<User | null> = this.store.select(SessionStateSelector.user); 
+  token$ = this.store.select(sessionFeature.selectToken); 
+  user$ = this.store.select(sessionFeature.selectUser); 
   constructor(
     private store: Store,
   ){}

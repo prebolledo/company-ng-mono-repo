@@ -1,5 +1,5 @@
-import { User } from '@company/shared/models';
 import { createAction, props } from '@ngrx/store';
+import { SessionState } from './state';
 
 export const auth = createAction(
   '[Session] auth',
@@ -8,7 +8,7 @@ export const auth = createAction(
 
 export const loginSuccessful = createAction(
   '[Session] login successful',
-  props<{ user: User, token: string }>(),  
+  props<SessionState>(),  
 );
 
 export const init = createAction(

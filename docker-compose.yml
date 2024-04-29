@@ -14,6 +14,7 @@ services:
       context: .
       dockerfile: cicd/app/Dockerfile
       args:
+        - ENV=stage
         - APP=account
         - BASE_HREF=/account
 
@@ -26,6 +27,7 @@ services:
       context: .
       dockerfile: cicd/app/Dockerfile
       args:
+        - ENV=stage
         - APP=products
         - BASE_HREF=/products   
 
@@ -41,4 +43,4 @@ services:
       - account_web
       - products_web
     ports:
-      - "4000:80"
+      - "80:80"

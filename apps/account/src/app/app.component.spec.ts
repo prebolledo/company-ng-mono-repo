@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -8,6 +8,7 @@ import { provideEffects } from '@ngrx/effects';
 import { SessionEffects, sessionFeature } from '@company/shared/session';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -21,11 +22,12 @@ describe('AppComponent', () => {
         provideEffects([SessionEffects]),        
       ],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();    
   });
 
   it('should be created', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.innerHTML).toContain(
       '<router-outlet></router-outlet>'

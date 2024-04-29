@@ -29,7 +29,6 @@ export class SessionEffects {
     return this.actions$.pipe(
       ofType(SessionStateActions.loginSuccessful),
       tap(() => {
-        console.log('loginRedirect effect')
         this.router.navigate(['profile']);
       })
     );
@@ -39,7 +38,6 @@ export class SessionEffects {
     return this.actions$.pipe(
       ofType(SessionStateActions.end),
       tap(() => {
-        console.log('endSessionRedirect effect')
         this.router.navigate(['login']);
       })
     );

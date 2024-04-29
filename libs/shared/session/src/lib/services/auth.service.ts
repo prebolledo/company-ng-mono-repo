@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { User } from '@company/shared/models';
 import { Observable, of, throwError } from 'rxjs'
 import { delay } from 'rxjs/operators'
+import { SessionState } from '../shared-session';
 
 const FAKE_DELAY = 600
 
@@ -14,7 +15,7 @@ export class AuthService {
     this.user = null;
   }
   
-  auth(email: string, password: string): Observable<{user: User, token: string}> {
+  auth(email: string, password: string): Observable<SessionState> {
     try {
       this.user = {
         email,

@@ -36,11 +36,25 @@
           "outputHashing": "all",
           "fileReplacements": [
             {
-              "replace": "libs/shared/environments/src/lib/environment.ts",
-              "with": "libs/shared/environments/src/lib/environment.prod.ts"
+              "replace": "apps/account/src/app/environments/environment.ts",
+              "with": "apps/account/src/app/environments/environment.prod.ts"
             }
           ]          
         },
+        "stage": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true,          
+          "fileReplacements": [
+            {
+              "replace": "apps/account/src/app/environments/environment.ts",
+              "with": "apps/account/src/app/environments/environment.stage.ts"
+            }
+          ]          
+        },        
         "development": {
           "buildOptimizer": false,
           "optimization": false,
@@ -54,9 +68,9 @@
     },
     "serve": {   
       "executor": "@angular-devkit/build-angular:dev-server", 
-      "options" : {
-        
-      },      
+      "options": {
+        "port": 4200
+      }, 
       "configurations": {
         "production": {
           "buildTarget": "account:build:production"

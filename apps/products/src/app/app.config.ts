@@ -4,7 +4,7 @@ import { appRoutes } from './app.routes';
 import { provideState, provideStore } from '@ngrx/store';
 import { sessionFeature } from '@company/shared/session';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { environment } from '@company/shared/environments';
+import { environment } from './environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [

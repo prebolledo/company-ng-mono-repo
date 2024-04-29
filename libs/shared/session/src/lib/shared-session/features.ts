@@ -3,6 +3,7 @@ import { createFeature, createReducer,on } from "@ngrx/store";
 import { initialState, SessionState, sessionStateFeatureKey } from './state'
 import { end, init, loginSuccessful } from "./actions";
 import { UserSession } from "./models";
+import { User } from "@company/shared/models";
 
 export const sessionFeature = createFeature({
   name: sessionStateFeatureKey,
@@ -22,17 +23,21 @@ export const sessionFeature = createFeature({
       };
     }),
     on(loginSuccessful, (currentState, action) => {
+      const user = { ...action.user } as User;
+      user.password = 'xxxxxxx';      
       if (sessionStorage.getItem('session') === null) {
+
         const userSession: UserSession = {
           token: action.token,
-          user: { ...action.user, password: 'xxxxxxx' },
-        }
+          user,
+        };
+        console.log('ummmmmm')
         sessionStorage.setItem('session', JSON.stringify(userSession));
       }
       return {
         ...currentState,
         token: action.token,
-        user: action.user,
+        user,
       };
     }),    
     on(end, () => {

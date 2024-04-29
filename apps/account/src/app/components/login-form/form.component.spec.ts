@@ -27,10 +27,8 @@ describe('FormComponent', () => {
   });
 
   it('should be created', () => {
-    const fixture = TestBed.createComponent(LoginFormComponent);
-    component = fixture.componentInstance;
     component.title = 'Login';
-    fixture.detectChanges();
+    fixture.detectChanges();       
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h2')?.textContent).toContain('Login');
   });  

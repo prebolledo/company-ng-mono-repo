@@ -17,7 +17,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@company/shared/environments": ["libs/shared/environments/src/index.ts"],
       "@company/shared/models": ["libs/shared/models/src/index.ts"],
       "@company/shared/session": ["libs/shared/session/src/index.ts"],
       "@company/user/profile": ["libs/user/profile/src/index.ts"]

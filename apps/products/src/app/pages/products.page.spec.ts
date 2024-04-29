@@ -1,12 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { provideState, provideStore } from '@ngrx/store';
 import { SessionEffects, sessionFeature } from '@company/shared/session';
 import { provideEffects } from '@ngrx/effects';
+import { ProductsPageComponent } from './products.page'
 
 describe('AppComponent', () => {
-  let fixture: ComponentFixture<AppComponent>;  
+  let component: ProductsPageComponent;  
+  let fixture: ComponentFixture<ProductsPageComponent>;  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterModule],
@@ -17,14 +18,20 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(ProductsPageComponent);
+    component = fixture.componentInstance
     fixture.detectChanges();    
   });
 
   it('should be created', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.innerHTML).toContain(
-      '<router-outlet></router-outlet>'
-    );
+    expect(component).toBeDefined();
   });
+
+  it('should render title', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    console.log(compiled.innerHTML)
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Products'
+    );
+  });  
 });
