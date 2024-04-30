@@ -17,7 +17,7 @@ services:
         - TENANT=cl
         - ENV=stage
         - APP=account
-        - BASE_HREF=/account
+        - BASE_HREF=/account/
 
   products_web:
     container_name: products
@@ -31,7 +31,7 @@ services:
         - TENANT=cl
         - ENV=stage
         - APP=products
-        - BASE_HREF=/products   
+        - BASE_HREF=/products/
 
   proxy_reverse:
     container_name: proxy-reverse

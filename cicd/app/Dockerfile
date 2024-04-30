@@ -28,7 +28,8 @@ ENV NX_DAEMON=false
 #CMD ["sleep", "infinity"]
 
 # Build the application
-RUN NG_APP_TENANT=$TENANT nx run $APP:build --configuration=$ENV --baseHref $BASE_HREF --deploy-url $BASE_HREF
+RUN NG_APP_TENANT=$TENANT nx run $APP:build --configuration=$ENV --base-href $BASE_HREF 
+#--deploy-url $BASE_HREF
 
 # Create a new stage for the runtime image
 FROM nginx:latest AS runtime

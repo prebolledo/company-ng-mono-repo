@@ -25,7 +25,7 @@ nvm use && npm start [account]
 
 ## Build for production
 
-Run `nx run $APP:build --configuration=$ENV --baseHref $BASE_HREF --deploy-url $BASE_HREF` to build the application.
+Run `NG_APP_TENANT=$TENANT nx run $APP:build --configuration=$ENV --base-href $BASE_HREF` to build the application.
 
 ## Create app
 
