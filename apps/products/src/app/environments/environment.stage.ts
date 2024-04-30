@@ -1,3 +1,4 @@
 export const environment = {
-  production: false
+  production: false,
+  tenant: import.meta.env.NG_APP_TENANT,
 };

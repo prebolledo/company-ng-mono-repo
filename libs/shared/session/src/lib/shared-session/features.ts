@@ -31,7 +31,6 @@ export const sessionFeature = createFeature({
           token: action.token,
           user,
         };
-        console.log('ummmmmm')
         sessionStorage.setItem('session', JSON.stringify(userSession));
       }
       return {

@@ -1,5 +1,7 @@
 # Use a specific version of the official Node.js image based on the slim variant
 FROM node:20.12.2-bullseye-slim AS build
+
+ARG TENANT
 ARG APP
 ARG ENV
 ARG BASE_HREF
@@ -12,7 +14,7 @@ COPY apps/$APP/ ./apps/$APP/
 COPY libs ./libs
 COPY cicd/app/nginx.conf /etc/nginx/nginx.conf
 
-RUN npm install -g npm@10.5.2
+RUN npm install -g npm@10.6.0
 
 # Install npm dependencies
 RUN npm ci
@@ -26,14 +28,14 @@ ENV NX_DAEMON=false
 #CMD ["sleep", "infinity"]
 
 # Build the application
-RUN nx run $APP:build --configuration=$ENV --baseHref $BASE_HREF --deploy-url $BASE_HREF
+RUN NG_APP_TENANT=$TENANT nx run $APP:build --configuration=$ENV --baseHref $BASE_HREF --deploy-url $BASE_HREF
 
 # Create a new stage for the runtime image
 FROM nginx:latest AS runtime
 
 ARG APP
 
-RUN apt-get update && apt-get install -y curl
+#RUN apt-get update && apt-get install -y curl
 
 WORKDIR /usr/src/root/app
 
