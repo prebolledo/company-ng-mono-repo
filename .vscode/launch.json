@@ -15,7 +15,7 @@
       }
     },
     {
-      "command": "nvm use && npm start account",
+      "command": "nvm use && pnpm run dev account",
       "name": "Debug Account App",
       "cwd": "${workspaceFolder}",
       "request": "launch",
@@ -27,7 +27,7 @@
       }
     },
     {
-      "command": "nvm use && npm start products",
+      "command": "nvm use && pnpm run dev products",
       "name": "Debug Products App",
       "cwd": "${workspaceFolder}",
       "request": "launch",

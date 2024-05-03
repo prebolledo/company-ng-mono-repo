@@ -1,31 +1,35 @@
-# Use a specific version of the official Node.js image based on the slim variant
 FROM node:20.12.2-bullseye-slim AS build
 
+#PNPM path
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+#Arguments to build de application
 ARG TENANT
 ARG APP
 ARG ENV
 ARG BASE_HREF
+
 # Set the working directory
 WORKDIR /usr/src/root
 
 # Copy required files for installing dependencies
-COPY package.json package-lock.json nx.json tsconfig.base.json ./
+COPY package.json pnpm-lock.yaml nx.json tsconfig.base.json ./
 COPY apps/$APP/ ./apps/$APP/
 COPY libs ./libs
 COPY cicd/app/nginx.conf /etc/nginx/nginx.conf
 
-RUN npm install -g npm@10.6.0
+# Install pnpm
+RUN npm install -g pnpm@9.0.6
 
-# Install npm dependencies
-RUN npm ci
+# Install pnpm dependencies
+RUN pnpm i --frozen-lockfile
 
 # Install nx globally
-RUN npm install -g nx
+RUN pnpm install -g nx
 
 # Set NX_DAEMON environment variable to false to prevent nx from running in daemon mode
 ENV NX_DAEMON=false
-
-#CMD ["sleep", "infinity"]
 
 # Build the application
 RUN NG_APP_TENANT=$TENANT nx run $APP:build --configuration=$ENV --base-href $BASE_HREF 
@@ -40,6 +44,7 @@ ARG APP
 
 WORKDIR /usr/src/root/app
 
+#Copy app to the current static directory
 COPY --from=build /usr/src/root/dist/apps/$APP /usr/src/root/app
 COPY --from=build /etc/nginx/nginx.conf /etc/nginx/nginx.conf
 
