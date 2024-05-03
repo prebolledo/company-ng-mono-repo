@@ -4,13 +4,13 @@ import { appRoutes } from './app.routes';
 import { provideState, provideStore } from '@ngrx/store';
 import { sessionFeature } from '@company/shared/session';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { environment } from './environments/environment';
+import { Environment } from './environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(appRoutes),
     provideStore(),    
     provideState(sessionFeature),
-    provideStoreDevtools({ maxAge: 25, logOnly: environment.production }),
+    provideStoreDevtools({ maxAge: 25, logOnly: Environment.get().production  }),
   ],
 };

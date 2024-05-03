@@ -29,7 +29,6 @@ describe('AppComponent', () => {
 
   it('should render title', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    console.log(compiled.innerHTML)
     expect(compiled.querySelector('h1')?.textContent).toContain(
       'Products'
     );

@@ -6,8 +6,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { SessionEffects, sessionFeature } from '@company/shared/session';
+import {Environment} from './environments/environment';
+import { IEnvironment } from './environments/types';
 
 describe('AppComponent', () => {
+  const mockEnvironment: IEnvironment = {
+    production: false,
+    tenant: 'ar'
+  };
   let fixture: ComponentFixture<AppComponent>;  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,7 +25,8 @@ describe('AppComponent', () => {
       providers: [
         provideStore(),    
         provideState(sessionFeature),
-        provideEffects([SessionEffects]),        
+        provideEffects([SessionEffects]), 
+        { provide: Environment, useValue: mockEnvironment }       
       ],
     }).compileComponents();
 

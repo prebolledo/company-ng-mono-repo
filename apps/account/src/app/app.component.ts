@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { SessionStateActions } from '@company/shared/session';
 import { ReactiveFormsModule } from '@angular/forms';
-import { environment } from './environments/environment';
+import { Environment } from './environments/environment';
 
 
 @Component({
@@ -27,8 +27,9 @@ export class AppComponent  implements OnInit {
   tenant: string
   constructor(
     private store: Store,
+    private environment: Environment
   ){
-    this.tenant = environment.tenant
+    this.tenant = this.environment.tenant
   }
 
   ngOnInit(): void {

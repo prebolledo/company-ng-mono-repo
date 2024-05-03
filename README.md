@@ -3,6 +3,7 @@
 ## Init
 
 ```shell
+nvm use
 cp example.env .env
 pnpm install
 ```
@@ -10,7 +11,7 @@ pnpm install
 ## Start the application in development mode
 
 ```shell
-nvm use && pnpm dev [account]
+pnpm dev [account]
 ```
 
 ## Explore the project
@@ -69,13 +70,13 @@ npx npx nx g @nx/angular:library name --directory=[shared|other-group-folder] [-
 ### Run test
 
 ```shell
-npx nx test --project=[app-name|lib-name]
+pnpm run lint test --project=[app-name|lib-name]
 ```
 
 ### Run lint
 
 ```shell
-npx nx lint --project=[app-name|lib-name]
+pnpm run lint --project=[app-name|lib-name]
 ```
 
 ### Build for production

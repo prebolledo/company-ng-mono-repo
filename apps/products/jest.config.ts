@@ -8,8 +8,25 @@ export default {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
       {
+        diagnostics: {
+          ignoreCodes: [1343],
+        },        
         tsconfig: '<rootDir>/tsconfig.spec.json',
         stringifyContentPathRegex: '\\.(html|svg)$',
+        astTransformers: {
+          before: [
+            {
+              path: 'node_modules/ts-jest-mock-import-meta',
+              options: {
+                metaObjectReplacement: {
+                  env: {
+                    NG_APP_TENANT: 'cl',
+                  },
+                },
+              },
+            },
+          ],
+        }, 
       },
     ],
   },
